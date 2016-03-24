@@ -1,15 +1,19 @@
 apply plugin: 'com.android.application'
 
+def versionMajor = 0
+def versionMinor = 2
+def versionBuild = 15
+
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "doit.study.dodroid"
+        applicationId "doit.study.droid"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 6
-        versionName "1.5"
+        versionCode versionBuild
+        versionName "${versionMajor}.${versionMinor}.${versionBuild}"
     }
     buildTypes {
         release {
@@ -22,15 +26,19 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.0'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:preference-v7:23.1.1'
+    compile 'com.android.support:recyclerview-v7:23.1.1'
+    compile 'com.google.android.gms:play-services:8.4.0'
+    compile 'com.android.support:design:23.1.1'
 }
 
 
 
 task exportQuestions(type:Exec, description: 'Run the pre-build python script') {
     workingDir 'src/main/res/raw/'
-    commandLine 'python', 'export_quiz_to_json.py'
+    commandLine 'python', 'import_quiz_to_json.py'
 }
 
 // This ensures my script will be called before building
-preBuild.dependsOn exportQuestions
+// preBuild.dependsOn exportQuestions

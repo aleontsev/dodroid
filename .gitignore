@@ -1,10 +1,14 @@
 .gradle
+app/src/main/java/doit/droid/MyScratch.java
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
 .DS_Store
 /build
 /captures
+
+#git config file
+.gitconfig
 
 #built application files
 *.apk
